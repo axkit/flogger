@@ -1,4 +1,4 @@
-# flogger [![GoDoc](https://pkg.go.dev/badge/github.com/axkit/flogger?status.svg)](https://pkg.go.dev/github.com/axkit/flogger) [![Build Status](https://travis-ci.org/axkit/flogger.svg?branch=master)](https://travis-ci.org/axkit/flogger) [![Coverage Status](https://coveralls.io/repos/github/axkit/flogger/badge.svg)](https://coveralls.io/github/flogger/flogger) [![Go Report Card](https://goreportcard.com/badge/github.com/axkit/flogger)](https://goreportcard.com/report/github.com/axkit/flogger)
+# flogger [![GoDoc](https://pkg.go.dev/badge/github.com/axkit/flogger?status.svg)](https://pkg.go.dev/github.com/axkit/flogger) [![Build Status](https://travis-ci.org/axkit/flogger.svg?branch=main)](https://travis-ci.org/axkit/flogger) [![Coverage Status](https://coveralls.io/repos/github/axkit/flogger/badge.svg)](https://coveralls.io/github/flogger/flogger) [![Go Report Card](https://goreportcard.com/badge/github.com/axkit/flogger)](https://goreportcard.com/report/github.com/axkit/flogger)
 
 # flogger
 The flogger package provides a simple function call logging by wrapping [zerolog](https://github.com/rs/zerolog) package.
