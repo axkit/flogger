@@ -69,7 +69,7 @@ func (repo *CustomerRepo)CustomerByID(id int) *Customer {
     repo.flog.Enter()
 }
 // Output
-{"time":1516134304,"level":"debug","func":"CustomerByID", "message":"enter"}
+{"time":1516134304,"level":"debug","func":"CustomerByID","message":"enter"}
 ```
 
 Writes 1 line: the function invocation fact with input parameters.
@@ -78,7 +78,7 @@ func (repo *CustomerRepo)NewCustomer(id int, name string, age int, ssn string) *
     repo.flog.Enter(id, name, age)
 }
 // Output
-{"time":1516134304,"level":"debug","func":"NewCustomer", "params": "[10 John 42]", "message":"enter"}
+{"time":1516134304,"level":"debug","func":"NewCustomer","params":"[10 John 42]","message":"enter"}
 ```
 
 Writes 2 lines: the function invocation fact with input parameters and function execution duration on exit.
@@ -86,6 +86,9 @@ Writes 2 lines: the function invocation fact with input parameters and function 
 func (repo *CustomerRepo)CustomerByID(id int) *Customer {
     defer repo.flog.Enter(id).Exit()
 }
+// Output
+{"time":1516134304,"level":"debug","func":"CustomerByID","params":"[10]","message":"enter"}
+{"time":1516134310,"level":"debug","func":"CustomerByID","dur":670,"message":"exit"}
 ```
 
 Writes 3 lines: the function invocation fact with input parameters. Writes the function execution duration on exit. Writes intermediate line as well.
