@@ -12,7 +12,7 @@ go get -u github.com/axkit/flogger
 ```
 
 ## Getting Started
-For simple logging use global logger flogger.G 
+For simple logging use global variable ```flogger.G``` 
 
 ```
 package main
@@ -46,7 +46,7 @@ func task(name string, a, b int) {
 ```
 
 ## Usage 
-Let's say we have following structure.
+Let's say we have following structure:
 ```
 import "github.com/axkit/flogger"
 
@@ -56,16 +56,20 @@ type CustomerRepo struct {
 }
 
 func NewCustomerRepo(l *zerolog.Logger) *CustomerRepo {
-    return &CustomerRepo{flog: flogger.New(l, "repo", "customer")}
+    return &CustomerRepo{
+        flog: flogger.New(l, "repo", "customer"),
+    }
 }
 ```
 
 ### Examples
-Writes 1 line: the function invocation fact to the log.
+Writes 1 line: the function invocation fact.
 ```
 func (repo *CustomerRepo)CustomerByID(id int) *Customer {
     repo.flog.Enter()
 }
+// Output
+{"time":1516134304,"level":"debug","func":"CustomerByID", "message":"enter"}
 ```
 
 Writes 1 line: the function invocation fact with input parameters.
@@ -73,6 +77,8 @@ Writes 1 line: the function invocation fact with input parameters.
 func (repo *CustomerRepo)NewCustomer(id int, name string, age int, ssn string) *Customer {
     repo.flog.Enter(id, name, age)
 }
+// Output
+{"time":1516134304,"level":"debug","func":"NewCustomer", "params": "[10 John 42]", "message":"enter"}
 ```
 
 Writes 2 lines: the function invocation fact with input parameters and function execution duration on exit.
@@ -82,7 +88,7 @@ func (repo *CustomerRepo)CustomerByID(id int) *Customer {
 }
 ```
 
-Writes 3 lines: the function invocation fact with input parameters. Writes the function execution duration on exit. Get possibility to write additional lines to the log.
+Writes 3 lines: the function invocation fact with input parameters. Writes the function execution duration on exit. Writes intermediate line as well.
 ```
 func (repo *CustomerRepo)CustomerByID(id int) *Customer {
 
@@ -152,9 +158,3 @@ BenchmarkLogger_EnterExit3-8              477002      2426 ns/op  400 B/op    6 
 
 ## License
 MIT
-
-
-
-
-
-
