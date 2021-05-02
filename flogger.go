@@ -176,3 +176,9 @@ func (fc *FuncCall) Warn() *zerolog.Event {
 func (fc *FuncCall) Info() *zerolog.Event {
 	return fc.log.Info().Str("func", fc.Name)
 }
+
+// Trace return zerolog.Event for writing intermetiate log items
+// between Enter() and Exit().
+func (fc *FuncCall) Trace() *zerolog.Event {
+	return fc.log.Trace().Str("func", fc.Name)
+}
